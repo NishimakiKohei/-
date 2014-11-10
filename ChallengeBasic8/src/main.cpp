@@ -51,8 +51,8 @@ int hit(Vec2f pos, Vec2f size,Vec2f box_pos,AppEnv  &app_env ){
 	}
 }
 
-void Draw(int enemy_x,int enemy_y,int size_x,int size_y,int start_tx,int start_ty,Texture &texture){
-	drawTextureBox(enemy_x,enemy_y,size_x,size_y,start_tx,start_ty,size_x,size_y,texture,Color(1,1,1));
+void Draw(Vec2f box_pos, Vec2f size, int start_tx, int start_ty, Texture &texture){
+	drawTextureBox(box_pos.x(), box_pos.y(), size.x(), size.y(), start_tx, start_ty, size.y(), size.y(), texture, Color(1, 1, 1));
 }
 
 void Init(){
@@ -89,6 +89,8 @@ int main() {
   AppEnv app_env(Window::WIDTH, Window::HEIGHT,
                  false, false);
 
+  Init();
+
   while (1) {
     // アプリウインドウが閉じられたらプログラムを終了
     if (!app_env.isOpen()) return 0;
@@ -109,8 +111,6 @@ int main() {
     // 描画準備
     app_env.setupDraw();
 
-	Init();
-
 	//hit(mouse_pos, enemy[0].size, enemy[0].pos, app_env);
 
     //
@@ -118,7 +118,7 @@ int main() {
     // 
 	//drawTextureBox(0, 0, 50, 50, 0, 0,50,50 ,mushi_graph,Color(1,1,1));
 
-	Draw(enemy[0].pos.x(), enemy[0].pos.y(), enemy[0].size.x(), enemy[0].size.y(), 0, 0, mushi_graph);
+	Draw(enemy[0].pos, enemy[0].size, 0, 0, mushi_graph);
 
 	//drawBox(0, 0, 50, 50, 5, color256(touch, touch, touch));
     
