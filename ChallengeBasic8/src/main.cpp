@@ -151,7 +151,7 @@ int main() {
     //
     // 描画処理はここでおこなう
     // 
-	if (hit(mouse_pos, enemy[0].pos, enemy[0].size, app_env) == 1){
+	if (flag==0&&hit(mouse_pos, enemy[0].pos, enemy[0].size, app_env) == 1){
 		flag = 1;
 	}
 		if (flag == 1){
