@@ -124,8 +124,10 @@ int main() {
   AppEnv app_env(Window::WIDTH, Window::HEIGHT,
                  false, false);
 
-  Texture mushi_graph("res/064742.png");
+  Texture mushi_graph1("res/064742.png");
+  Texture mushi_graph2("res/064743.png");
   Texture mushi_blood("res/nc.png");
+
   Init();
 
   Random random;
@@ -140,7 +142,7 @@ int main() {
 			
 	if (flag == 0&&count % 200==0)move_flag *= -1;
 	if(flag == 0&&move_flag==1)enemy[0].pos.x() += 0.5;
-	if (flag == 0 &&move_flag == -1)enemy[0].pos.x() -= 0.5;
+	if (flag == 0 && move_flag == -1)enemy[0].pos.x() -= 0.5;
 	if (enemy[0].pos.x() <= -WIDTH / 2)move_flag = 1;
 	if (enemy[0].pos.x() >= WIDTH / 2 + 128)move_flag = -1;
 	
@@ -151,6 +153,7 @@ int main() {
     //
     // 描画処理はここでおこなう
     // 
+
 	if (flag==0&&hit(mouse_pos, enemy[0].pos, enemy[0].size, app_env) == 1){
 		flag = 1;
 	}
@@ -164,9 +167,6 @@ int main() {
 					flag = 0;
 				}
 			}
-		
-	
-	
 
 	if (flag==0&&hit(mouse_pos, enemy[0].pos, enemy[0].size, app_env) == 2){
 		flag = 2;
@@ -184,9 +184,9 @@ int main() {
 				flag = 0;
 			}
 		}
-		
-	
-	  if(flag==0||flag==2)Draw(enemy[0].pos, enemy[0].size, 0, 0, mushi_graph);
+
+	if (flag == 0 && move_flag == 1 || flag == 2&&move_flag == 1)Draw(enemy[0].pos, enemy[0].size, 0, 0, mushi_graph1);
+	  if (move_flag == -1 && flag == 0 || move_flag == -1 && flag == 2)Draw(enemy[0].pos, enemy[0].size, 0, 0, mushi_graph2);
 		
 	//drawBox(0, 0, 50, 50, 5, color256(touch, touch, touch));
     
