@@ -2,7 +2,7 @@
 //
 // 乱数
 //
-#ifdef USE_RAND 
+
 #include "random.hpp"
 
 
@@ -36,4 +36,3 @@ float Random::fromZeroToOne() {
 float Random::fromFirstToLast(const float first, const float last) {
   return first + (last - first) * fromZeroToOne();
 }
-#endif

@@ -4,11 +4,8 @@
 //
 // 乱数
 //
-//#define USE_RAND 0
+
 #include "defines.hpp"
-
-
-#ifdef USE_RAND 
 #include <random>
 
 
@@ -36,4 +33,3 @@ public:
   float fromFirstToLast(const float first, const float last);
   
 };
-#endif
